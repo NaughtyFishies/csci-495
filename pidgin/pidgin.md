@@ -24,33 +24,33 @@ will (future)
 
 Examples:
 
-He ed run. (He ran.)
+He ed move. (He moved.)
 
-She ing run. (She is running.)
+She ing move. (She is moving.)
 
-They will run. (They will run.)
+They will move. (They will move.)
 
 Lesson 3: Negatives and Questions
 
 Negatives use no before the verb:
 
-I no eat meat. (I don't eat meat.)
+I no eat food. (I don't eat food.)
 
 Questions start with ha:
 
-Ha you ing go home? (Are you going home now?)
+Ha you ing move home? (Are you moving home now?)
 
 Lesson 4: Direction and Place
 
 Direction uses basic position words:
 
-run right (run to the right)
+move right (move to the right)
 
 look no right (look to the left)
 
 come ing (coming towards speaker, or here)
 
-go ed (went away from speaker)
+moving ed (went away from speaker)
 
 stand will (stand forward or ahead)
 
@@ -58,11 +58,11 @@ walk no will (walk behind)
 
 Example sentences:
 
-He ing run right. (He is running to the right.)
+He ing move right. (He is moving to the right.)
 
 Bird fly no right. (The bird flies left.)
 
-You will go ing? (Will you come towards me?)
+You will move ing at i? (Will you come towards me?)
 
 Lesson 5: Negatives and Questions
 
@@ -96,35 +96,46 @@ Bird fly south. (The bird flies south.)
 
 Lesson 7: Practice Dialogue
 
-Person A: Ha you ing run right? (Are you running right?)Person B: No, I run no right. (No, I run left.)
+Person A: Ha you ing move right? (Are you moving right?)Person B: No, I move no right. (No, I move left.)
 
-Person A: You ed go east yesterday? (Did you go east yesterday?)Person B: No, I ed go west. (No, I went west.)
-
-Vocabulary Quick Reference
-
-Pronouns: I, you, he, she, we, they
-
-Verbs: go, come, eat, drink, see, speak, know, want, run, love, think
-
-Directions: right, no right (left), ing (toward), no ing (away), north, south, east, west
+Person A: You ed move east yesterday? (Did you move east yesterday?)Person B: No, I ed move west. (No, I went west.)
 
 Practice Sentences:
 
-I will run right.
+I will move right.
 
-Did she go left?
+Did she move left?
 
 They are coming west.
 
-You did not run east.
+You did not move east.
 
 (Answers:)
 
-I will run right.
+I will move right.
 
-Ha she ed go no right?
+Ha she ed move no right?
 
 They ing come west.
 
-You ed no run east.
+You ed no move east.
 
+Vocabulary:
+    # pronouns
+    "i", "you", "they", "we",
+    # verbs 
+    "move", "take", "see", "say", "know", "want", "touch", "love", "hate", "think", "use", "are", "fly", "sleep", "stand", 
+    # graph
+    "right", "left", "north", "south", "east", "west",
+    # grammatical
+    "no", "ha", "yes", "ed", "will", "ing",
+    # Conjunctions
+    "and", "or",
+    # Numbers
+    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "many",
+    # Prepositions
+    "in", "on", "at", "with",
+    # Nouns
+    "food", "water", "house", "person", "child", "tree", "sun", "moon", "sky", "bird", "dog", "cat", "road", "day", "night"
+    # Adjectives
+    "big", "small", "good", "bad", "hot", "cold", "red", "blue", "yellow", "green"

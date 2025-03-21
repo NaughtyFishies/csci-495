@@ -1,12 +1,36 @@
 import torch
 import torch.nn as nn
 
-vocab = {
-    "I": 1, "you": 2, "he": 3, "she": 4, "we": 5, "they": 6,
-    "go": 7, "come": 8, "eat": 9, "drink": 10, "see": 11, "speak": 12, "know": 13, "want": 14, "run": 15, "love": 16, "think": 17,
-    "right": 18, "no right": 19, "ing": 20, "no ing": 21, "north": 22, "south": 23, "east": 24, "west": 25,
-    "ed": 26, "will": 27, "no": 28, "ha": 29
-}
+
+def create_numbered_vocab(word_list):
+    return {word: idx + 1 for idx, word in enumerate(word_list)}
+
+# Example usage
+word_list = [
+    # No gender
+    # no capitalization
+
+    # pronouns
+    "i", "you", "they", "we",
+    # verbs 
+    "move", "take", "see", "say", "know", "want", "touch", "love", "hate", "think", "use", "are", "fly", "sleep", "stand", 
+    # graph
+    "right", "left", "north", "south", "east", "west",
+    # grammatical
+    "no", "ha", "yes", "ed", "will", "ing",
+    # Conjunctions
+    "and", "or",
+    # Numbers
+    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "many",
+    # Prepositions
+    "in", "on", "at", "with",
+    # Nouns
+    "food", "water", "house", "person", "child", "tree", "sun", "moon", "sky", "bird", "dog", "cat", "road", 
+    # Adjectives
+    "big", "small", "good", "bad", "hot", "cold", "red", "blue", "yellow", "green"
+]
+
+vocab = create_numbered_vocab(word_list)
 
 vocab_size = len(vocab) + 1  # +1 for padding/unknown tokens
 embedding_dim = 100 # Tweek depending on what we choose
