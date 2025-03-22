@@ -120,7 +120,7 @@ They ing come west.
 
 You ed no move east.
 
-Vocabulary:
+vocabulary = [
     # pronouns
     "i", "you", "they", "we",
     # verbs 
@@ -136,6 +136,7 @@ Vocabulary:
     # Prepositions
     "in", "on", "at", "with",
     # Nouns
-    "food", "water", "house", "person", "child", "tree", "sun", "moon", "sky", "bird", "dog", "cat", "road", "day", "night"
+    "food", "water", "house", "person", "child", "tree", "sun", "moon", "sky", "bird", "dog", "cat", "road", "day", "night",
     # Adjectives
-    "big", "small", "good", "bad", "hot", "cold", "red", "blue", "yellow", "green"
+    "big", "small", "good", "bad", "hot", "cold", "red", "blue", "yellow", "green", "happy", "sad"
+]

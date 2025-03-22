@@ -3,13 +3,34 @@ from key import api_key
 import time
 import json
 
+vocabulary = [
+    # pronouns
+    "i", "you", "they", "we",
+    # verbs 
+    "move", "take", "see", "say", "know", "want", "touch", "love", "hate", "think", "use", "are", "fly", "sleep", "stand", 
+    # graph
+    "right", "left", "north", "south", "east", "west",
+    # grammatical
+    "no", "ha", "yes", "ed", "will", "ing",
+    # Conjunctions
+    "and", "or",
+    # Numbers
+    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "many",
+    # Prepositions
+    "in", "on", "at", "with",
+    # Nouns
+    "food", "water", "house", "person", "child", "tree", "sun", "moon", "sky", "bird", "dog", "cat", "road", "day", "night",
+    # Adjectives
+    "big", "small", "good", "bad", "hot", "cold", "red", "blue", "yellow", "green", "happy", "sad"
+]
+
 def request_story():
     client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
 
     with open("pidgin.md", "r") as reference:
         context = reference.read()
 
-    query = f"Using this following data as a reference, can you write a short children's story using this way of writing and exclusively this vocabulary: {context}?"
+    query = f"Using this following data as a reference, can you write a short children's story using this way of writing:{context} and exclusively this vocabulary: {vocabulary}?"
 
     try:
         response = client.chat.completions.create(
@@ -42,7 +63,7 @@ def request_story():
         print(f"An error occurred: {e}")
 
 def main():
-    for i in range(8):
+    for i in range(5):
         print(f"Requesting Story {i + 1}")
         request_story()
         time.sleep(5)
