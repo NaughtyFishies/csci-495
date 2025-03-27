@@ -1,26 +1,7 @@
 import json
 import re
+from vocabulary import vocabulary
 
-vocabulary = [
-    # pronouns
-    "i", "you", "they", "we",
-    # verbs 
-    "move", "take", "see", "say", "know", "want", "touch", "love", "hate", "think", "use", "are", "fly", "sleep", "stand", 
-    # graph
-    "right", "left", "north", "south", "east", "west",
-    # grammatical
-    "no", "ha", "yes", "ed", "will", "ing",
-    # Conjunctions
-    "and", "or",
-    # Numbers
-    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "many",
-    # Prepositions
-    "in", "on", "at", "with",
-    # Nouns
-    "food", "water", "house", "person", "child", "tree", "sun", "moon", "sky", "bird", "dog", "cat", "road", "day", "night",
-    # Adjectives
-    "big", "small", "good", "bad", "hot", "cold", "red", "blue", "yellow", "green", "happy", "sad"
-]
 
 with open('response.json', 'r') as file:
     story_list = json.load(file)
@@ -30,6 +11,8 @@ def preprocess_string(s):
     s = s.lower()
     s = s.replace('\n', '')
     s = s.replace('\"', '')
+    s = s.replace('  ', '')
+    s = s.replace(' me ', ' i ')
     return s.strip()
 
 processed_string_list = [preprocess_string(s) for s in story_list]

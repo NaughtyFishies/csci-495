@@ -2,27 +2,7 @@ from openai import OpenAI
 from key import api_key
 import time
 import json
-
-vocabulary = [
-    # pronouns
-    "i", "you", "they", "we",
-    # verbs 
-    "move", "take", "see", "say", "know", "want", "touch", "love", "hate", "think", "use", "are", "fly", "sleep", "stand", 
-    # graph
-    "right", "left", "north", "south", "east", "west",
-    # grammatical
-    "no", "ha", "yes", "ed", "will", "ing",
-    # Conjunctions
-    "and", "or",
-    # Numbers
-    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "many",
-    # Prepositions
-    "in", "on", "at", "with",
-    # Nouns
-    "food", "water", "house", "person", "child", "tree", "sun", "moon", "sky", "bird", "dog", "cat", "road", "day", "night",
-    # Adjectives
-    "big", "small", "good", "bad", "hot", "cold", "red", "blue", "yellow", "green", "happy", "sad"
-]
+from vocabulary import vocabulary
 
 def request_story():
     client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
@@ -30,7 +10,9 @@ def request_story():
     with open("pidgin.md", "r") as reference:
         context = reference.read()
 
-    query = f"Using this following data as a reference, can you write a short children's story using this way of writing:{context} and exclusively this vocabulary: {vocabulary}?"
+    query = f"Using this following data as a reference, can you write a short children's story using this way of writing:{context} and exclusively this vocabulary: {vocabulary}? \
+                The story takes places in a simple town with a row of houses. Everything that is in this town is defined in the vocabulary. Ensure that there are no other words in your \
+                response other than the ones in the vocabulary. Do not include anything else in your response besides the story."
 
     try:
         response = client.chat.completions.create(
@@ -39,7 +21,7 @@ def request_story():
                 {"role": "system", "content": "You are a helpful assistant"},
                 {"role": "user", "content": query},
             ],
-            temperature=1.5,  # Recommended for creative writing
+            temperature=1.5,  # 1.5 Recommended for creative writing
             max_tokens=4000,   # Default max tokens
             stream=False
         )
@@ -66,7 +48,6 @@ def main():
     for i in range(5):
         print(f"Requesting Story {i + 1}")
         request_story()
-        time.sleep(5)
 
 if __name__ == "__main__":
     main()
