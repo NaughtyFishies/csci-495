@@ -74,19 +74,19 @@ A state change may require resources, so use those
 
 ## Lession 7: Vocabulary
 
-* Pronouns: i, you, they, we
-* Verbs: move, take, see, say, know, want, touch, love, hate, think, use, get, fly, sleep, stand
-* Locations: right, left, front, back, north, south, east, west
+* Pronouns: i, you, they, we, the
+* Verbs: move, take, see, say, know, want, touch, love, hate, think, use, are, get, fly, sleep, stand, shine, like, come, give, eat, play, wake, run, thank, dream, wave, sing, sit, listen, bark, blow, go, roll, look, laugh, drink, can
+* Locations: right, left, front, back, north, south, east, west, here, there, up, down
 * Time: now, last, next, old, new.
 * Grammar: no, ha, ed, will, ing.
 * Logic: no, yes, and, or
 * Numbers: none, some, many, all, one, two, three, four, five, six, seven, eight, nine.
-* Color: white, black, grey, red, green, blue
-* Prepositions: in, on, at, with, near
-* Nouns: food, water, house, person, tree, bird, dog, cat, road, day, night
+* Color: white, black, grey, red, green, blue, yellow
+* Prepositions: in, on, at, with, near, too
+* Nouns: food, water, house, person, child, parent, tree, sun, moon, house, sky, bird, dog, cat, road, day, night, end, begin, fruit, wind, both, ball, star, wing
 * Adjectives: big, small, good, bad, hot, cold, happy, sad, light, dark.
 * Change State: open, close, break, make, fix.
-* Internal state: hungry, full, happy, sad, mad, scared
+* Internal state: hungry, full, happy, sad, mad, scared, thirsty
 
 Example sentences:
 
