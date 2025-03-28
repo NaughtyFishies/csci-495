@@ -1,6 +1,12 @@
-Minimal Pidgin English: Tutorial
+# Ing Say: A minimalist pidgin English.
 
-Lesson 1: Basics
+## Introduction
+
+The purpose of Ing Say is to communicate in a simplified world, where the universe is a small connected graph of locations occupied by objects and entities.
+
+The alphabet is lowercase, and punctuation is period(.), question (?), and exclamation (!).  Words can be grouped with quotes (any kind, including parenthesis) for composite concepts.
+
+## Lesson 1: Basics
 
 Sentence structure is always simple:
 
@@ -8,135 +14,91 @@ Subject + Verb + (Object)
 
 Examples:
 
-I eat food. (I eat/I am eating food.)
+* i eat food. (I eat food - just a fact about me)
+* they like cat. (they like cat - also a fact)
 
-She see bird. (She sees a bird.)
+## Lesson 2: Time Words
 
-Lesson 2: Time Words
+Use explicit verb prefix words to show time:
 
-Use explicit words to show time:
-
-ed (past)
-
-ing (present continuous)
-
-will (future)
+* ed (past)
+* ing (present continuous)
+* will (future)
 
 Examples:
 
-He ed move. (He moved.)
+* i ed eat food. (I ate food)
+* they will like cat. (They will like the cat)
+* we ing friend. (We are currenly friends)
 
-She ing move. (She is moving.)
+## Lesson 3: 
 
-They will move. (They will move.)
+no represents the set compliment, negation or false.
 
-Lesson 3: Negatives and Questions
+* i no eat meat. (i do not eat meat)
+* i eat no meat. (i eat anything-presumbaly food-that is not meat)
 
-Negatives use no before the verb:
+## Lesson 4: Yes or No Questions
 
-I no eat food. (I don't eat food.)
+Yes or no questions are a statement followed by ha?
 
-Questions start with ha:
+* ha you ing move home? (Are you moving home now?)
 
-Ha you ing move home? (Are you moving home now?)
+A reponse to a yes or no question can be:
 
-Lesson 4: Direction and Place
+* yes.
+* no.
+* ha.  (I do not know or am uncertain)
+* no ha. (Invalid question)
 
-Direction uses basic position words:
+## Lesson 5: Placeholder questions
 
-move right (move to the right)
+Ha can be a placeholder in a statement to turn it into a question.
 
-look no right (look to the left)
+* you ing move ha?  (Where are you moving to?)
 
-come ing (coming towards speaker, or here)
+A response can simply be the placeholder
 
-moving ed (went away from speaker)
+* home.
+* no ha.  (invalid question, maybe I am not moving)
 
-stand will (stand forward or ahead)
+## Lesson 6: Go is desire or imperitive to change state.
 
-walk no will (walk behind)
+* i go left.
+* they go eat.
+
+A state change may require resources, so use those
+
+* i use bike go home.
+* i use key go open door.
+
+## Lession 7: Vocabulary
+
+* Pronouns: i, you, they, we
+* Verbs: move, take, see, say, know, want, touch, love, hate, think, use, get, fly, sleep, stand
+* Locations: right, left, front, back, north, south, east, west
+* Time: now, last, next, old, new.
+* Grammar: no, ha, ed, will, ing.
+* Logic: no, yes, and, or
+* Numbers: none, some, many, all, one, two, three, four, five, six, seven, eight, nine.
+* Color: white, black, grey, red, green, blue
+* Prepositions: in, on, at, with, near
+* Nouns: food, water, house, person, tree, bird, dog, cat, road, day, night
+* Adjectives: big, small, good, bad, hot, cold, happy, sad, light, dark.
+* Change State: open, close, break, make, fix.
+* Internal state: hungry, full, happy, sad, mad, scared
 
 Example sentences:
 
-He ing move right. (He is moving to the right.)
+they ing move right. (They are moving to the right.)
 
-Bird fly no right. (The bird flies left.)
+all bird ed fly south. (the birds flew south)
 
-You will move ing at i? (Will you come towards me?)
+you will move at i. ha? (Will you come towards me?)
 
-Lesson 5: Negatives and Questions
+you will eat ha? (What will you eat?)
 
-Negatives:
 
-Use no directly before the verb.
+# Sample story
 
-Examples:
-
-She no see bird. (She doesn't see a bird.)
-
-Questions:
-
-Use ha at the start of the sentence.
-
-Examples:
-
-Ha you ing sleep? (Are you sleeping?)
-
-Lesson 6: Cardinal Directions (Optional Expansion)
-
-For space and location:
-
-Use basic cardinal words: north, south, east, west
-
-Examples:
-
-House east. (The house is to the east.)
-
-Bird fly south. (The bird flies south.)
-
-Lesson 7: Practice Dialogue
-
-Person A: Ha you ing move right? (Are you moving right?)Person B: No, I move no right. (No, I move left.)
-
-Person A: You ed move east yesterday? (Did you move east yesterday?)Person B: No, I ed move west. (No, I went west.)
-
-Practice Sentences:
-
-I will move right.
-
-Did she move left?
-
-They are coming west.
-
-You did not move east.
-
-(Answers:)
-
-I will move right.
-
-Ha she ed move no right?
-
-They ing come west.
-
-You ed no move east.
-
-vocabulary = [
-    # pronouns
-    "i", "you", "they", "we",
-    # verbs 
-    "move", "take", "see", "say", "know", "want", "touch", "love", "hate", "think", "use", "are", "fly", "sleep", "stand", 
-    # graph
-    "right", "left", "north", "south", "east", "west",
-    # grammatical
-    "no", "ha", "yes", "ed", "will", "ing",
-    # Conjunctions
-    "and", "or",
-    # Numbers
-    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "many",
-    # Prepositions
-    "in", "on", "at", "with",
-    # Nouns
-    "food", "water", "house", "person", "child", "tree", "sun", "moon", "sky", "bird", "dog", "cat", "road", "day", "night",
-    # Adjectives
-    "big", "small", "good", "bad", "hot", "cold", "red", "blue", "yellow", "green", "happy", "sad"
-]
+al ed like bu. bu ing sad. bu ed break bike. al say bu "i help you.". bu say al "bike use tire. tire no have air.". al say "bu no go. i go fix".  al go home.  al get pump.  al go bu. al fix tire.  bu ed sad. bu ing happy.
