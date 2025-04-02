@@ -119,24 +119,3 @@ Ha she ed move no right?
 They ing come west.
 
 You ed no move east.
-
-vocabulary = [
-    # pronouns
-    "i", "you", "they", "we",
-    # verbs 
-    "move", "take", "see", "say", "know", "want", "touch", "love", "hate", "think", "use", "are", "fly", "sleep", "stand", 
-    # graph
-    "right", "left", "north", "south", "east", "west",
-    # grammatical
-    "no", "ha", "yes", "ed", "will", "ing",
-    # Conjunctions
-    "and", "or",
-    # Numbers
-    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "many",
-    # Prepositions
-    "in", "on", "at", "with",
-    # Nouns
-    "food", "water", "house", "person", "child", "tree", "sun", "moon", "sky", "bird", "dog", "cat", "road", "day", "night",
-    # Adjectives
-    "big", "small", "good", "bad", "hot", "cold", "red", "blue", "yellow", "green", "happy", "sad"
-]
