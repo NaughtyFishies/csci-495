@@ -1,26 +1,58 @@
-vocabulary = [
-    # pronouns
-    "i", "you", "they", "we", "the",
-    # verbs 
-    "move", "take", "see", "say", "know", "want", "touch", "love", "hate", "think", "use",
-    "are", "fly", "sleep", "stand", "shine", "like", "come", "give", "eat", "play", "wake", "run", "thank", 
-    "dream", "wave", "sing", "sit", "listen", "bark", "blow", "go", "roll", "look", "laugh", "drink",
-    "can", "meow", 
-    # graph
-    "right", "left", "north", "south", "east", "west", "back", "here", "now", "up", "down", "there", 
-    # grammatical
-    "no", "ha", "yes", "ed", "will", "ing", "too", 
-    # Conjunctions
-    "and", "or",
+vocabulary = {
+    # Pronouns
+    "pronouns": ["i", "you", "they", "we", "the"],
+    
+    # Verbs
+    "verbs": [
+        "move", "take", "see", "say", "know", "want", "touch", "love", "hate",
+        "think", "use", "are", "get", "fly", "sleep", "stand", "shine", "like",
+        "come", "give", "eat", "play", "wake", "run", "thank", "dream", "wave",
+        "sing", "sit", "listen", "bark", "blow", "go", "roll", "look", "laugh",
+        "drink", "can"
+    ],
+    
+    # Locations
+    "locations": [
+        "right", "left", "front", "back", "north", "south", "east", "west",
+        "here", "there", "up", "down"
+    ],
+    
+    # Time
+    "time": ["now", "last", "next", "old", "new"],
+    
+    # Grammar markers
+    "grammar": ["ha", "ed", "will", "ing"],
+    
+    # Logic words
+    "logic": ["no", "yes", "and", "or"],
+    
     # Numbers
-    "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "many",
+    "numbers": [
+        "none", "some", "many", "all", "one", "two", "three", "four", "five",
+        "six", "seven", "eight", "nine"
+    ],
+    
+    # Colors
+    "colors": ["white", "black", "grey", "red", "green", "blue", "yellow"],
+    
     # Prepositions
-    "in", "on", "at", "with",
+    "prepositions": ["in", "on", "at", "with", "near", "too"],
+    
     # Nouns
-    "food", "water", "house", "person", "child", "tree", "sun", "moon", "sky", "bird", "dog", "cat",
-    "road", "day", "night", "end", "fruit", "wind", "both", "me", "all", "ball", "star", "wing", 
+    "nouns": [
+        "food", "water", "house", "person", "child", "parent", "tree", "sun",
+        "moon", "sky", "bird", "dog", "cat", "road", "day", "night", "end",
+        "begin", "fruit", "wind", "both", "ball", "star", "wing"
+    ],
+    
     # Adjectives
-    "big", "small", "good", "bad", "hot", "cold", "red", "blue", "yellow", "green", "happy", "sad", "light", "dark", 
-    # Adverbs
-    "again"
-]
+    "adjectives": [
+        "big", "small", "good", "bad", "hot", "cold", "light", "dark"
+    ],
+    
+    # Change state verbs
+    "change_state": ["open", "close", "break", "make", "fix"],
+    
+    # Internal states
+    "internal_state": ["hungry", "full", "happy", "sad", "mad", "scared", "thirsty"]
+}

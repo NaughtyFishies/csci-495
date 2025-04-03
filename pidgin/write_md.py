@@ -1,4 +1,6 @@
-# Ing Say: A minimalist pidgin English.
+from vocabulary import vocabulary
+
+md = """# Ing Say: A minimalist pidgin English.
 
 ## Introduction
 
@@ -74,23 +76,20 @@ A state change may require resources, so use those
 
 ## Lesson 7: Vocabulary
 
-* Pronouns: i, you, they, we, the
-* Verbs: move, take, see, say, know, want, touch, love, hate, think, use, are, get, fly, sleep, 
-       stand, shine, like, come, give, eat, play, wake, run, thank, dream, wave, sing, sit, listen, 
-       bark, blow, go, roll, look, laugh, drink, can
-* Locations: right, left, front, back, north, south, east, west, here, there, up, down
-* Time: now, last, next, old, new
-* Grammar: ha, ed, will, ing
-* Logic: no, yes, and, or
-* Numbers: none, some, many, all, one, two, three, four, five, six, seven, eight, nine
-* Colors: white, black, grey, red, green, blue, yellow
-* Prepositions: in, on, at, with, near, too
-* Nouns: food, water, house, person, child, parent, tree, sun, moon, sky, bird, dog, cat, road, day, 
-       night, end, begin, fruit, wind, both, ball, star, wing
-* Adjectives: big, small, good, bad, hot, cold, light, dark
-* Change_state: open, close, break, make, fix
-* Internal_state: hungry, full, happy, sad, mad, scared, thirsty
+"""
 
+words_per_line = 15
+for category, words in vocabulary.items():
+    md += f"* {category.capitalize()}: "
+    for i, word in enumerate(words, 1):
+        md += word
+        if i != len(words):
+            md += ", "
+        if i % words_per_line == 0:
+            md += "\n" + " " * (len(category) + 2)
+    md += '\n'
+
+md += """
 Example sentences:
 
 they ing move right. (They are moving to the right.)
@@ -103,4 +102,7 @@ you will eat ha? (What will you eat?)
 
 # Sample story
 
-al ed like bu. bu ing sad. bu ed break bike. al say bu "i help you.". bu say al "bike use tire. tire no have air.". al say "bu no go. i go fix".  al go home.  al get pump.  al go bu. al fix tire.  bu ed sad. bu ing happy.
+al ed like bu. bu ing sad. bu ed break bike. al say bu "i help you.". bu say al "bike use tire. tire no have air.". al say "bu no go. i go fix".  al go home.  al get pump.  al go bu. al fix tire.  bu ed sad. bu ing happy."""
+
+with open("pidgin.md", "w") as file:
+    file.write(md)
