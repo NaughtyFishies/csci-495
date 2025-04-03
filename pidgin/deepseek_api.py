@@ -10,9 +10,8 @@ def request_story():
     with open("pidgin.md", "r") as reference:
         context = reference.read()
 
-    query = f"Using this following data as a reference, can you write a short children's story using this way of writing:{context} and exclusively this vocabulary: {vocabulary}? \
-                The story takes places in a simple town with a row of houses. Everything that is in this town is defined in the vocabulary. Ensure that there are no other words in your \
-                response other than the ones in the vocabulary. Do not include anything else in your response besides the story."
+    query = f"Using this following data as a reference, can you write a short children's story using this way of writing:{context} and exclusively this vocabulary: {vocabulary} \
+                The story takes places in a simple town with a row of houses. Before you return the story, parse it and check that only words from the vocabulary are in your story. Do not include anything else in your response besides the story."
 
     try:
         response = client.chat.completions.create(

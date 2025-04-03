@@ -1,6 +1,6 @@
 vocabulary = {
     # Pronouns
-    "pronouns": ["i", "you", "they", "we", "the"],
+    "pronouns": ["i", "you", "they", "we", "the", "me"],
     
     # Verbs
     "verbs": [
@@ -8,7 +8,7 @@ vocabulary = {
         "think", "use", "are", "get", "fly", "sleep", "stand", "shine", "like",
         "come", "give", "eat", "play", "wake", "run", "thank", "dream", "wave",
         "sing", "sit", "listen", "bark", "blow", "go", "roll", "look", "laugh",
-        "drink", "can"
+        "drink", "can", "again"
     ],
     
     # Locations

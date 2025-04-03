@@ -2,6 +2,11 @@ import json
 import re
 from vocabulary import vocabulary
 
+flat_list = []
+for words in vocabulary.values():
+    flat_list.extend(words)
+
+vocabulary = flat_list
 
 with open('response.json', 'r') as file:
     story_list = json.load(file)

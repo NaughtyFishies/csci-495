@@ -74,10 +74,10 @@ A state change may require resources, so use those
 
 ## Lesson 7: Vocabulary
 
-* Pronouns: i, you, they, we, the
+* Pronouns: i, you, they, we, the, me
 * Verbs: move, take, see, say, know, want, touch, love, hate, think, use, are, get, fly, sleep, 
        stand, shine, like, come, give, eat, play, wake, run, thank, dream, wave, sing, sit, listen, 
-       bark, blow, go, roll, look, laugh, drink, can
+       bark, blow, go, roll, look, laugh, drink, can, again
 * Locations: right, left, front, back, north, south, east, west, here, there, up, down
 * Time: now, last, next, old, new
 * Grammar: ha, ed, will, ing
@@ -100,7 +100,3 @@ all bird ed fly south. (the birds flew south)
 you will move at i. ha? (Will you come towards me?)
 
 you will eat ha? (What will you eat?)
-
-# Sample story
-
-al ed like bu. bu ing sad. bu ed break bike. al say bu "i help you.". bu say al "bike use tire. tire no have air.". al say "bu no go. i go fix".  al go home.  al get pump.  al go bu. al fix tire.  bu ed sad. bu ing happy.

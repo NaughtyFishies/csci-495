@@ -98,11 +98,7 @@ all bird ed fly south. (the birds flew south)
 
 you will move at i. ha? (Will you come towards me?)
 
-you will eat ha? (What will you eat?)
-
-# Sample story
-
-al ed like bu. bu ing sad. bu ed break bike. al say bu "i help you.". bu say al "bike use tire. tire no have air.". al say "bu no go. i go fix".  al go home.  al get pump.  al go bu. al fix tire.  bu ed sad. bu ing happy."""
+you will eat ha? (What will you eat?)"""
 
 with open("pidgin.md", "w") as file:
     file.write(md)
