@@ -42,7 +42,7 @@ vocabulary = {
     "nouns": [
         "food", "water", "house", "person", "child", "parent", "tree", "sun",
         "moon", "sky", "bird", "dog", "cat", "road", "day", "night", "end",
-        "begin", "fruit", "wind", "both", "ball", "star", "wing"
+        "begin", "fruit", "wind", "both", "ball", "star", "wing", "brother", "sister", "mom", "dad"
     ],
     
     # Adjectives
@@ -54,5 +54,8 @@ vocabulary = {
     "change_state": ["open", "close", "break", "make", "fix"],
     
     # Internal states
-    "internal_state": ["hungry", "full", "happy", "sad", "mad", "scared", "thirsty"]
+    "internal_state": ["hungry", "full", "happy", "sad", "mad", "scared", "thirsty"],
+    
+    # Names
+    "names": ["al", "bu", "ku", "bur", "gur", "sur", "gu", "ret", "pet", "pur", "yur", "gee", "zee", "mom", "dad"]
 }

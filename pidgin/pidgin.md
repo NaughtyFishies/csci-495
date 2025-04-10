@@ -86,10 +86,12 @@ A state change may require resources, so use those
 * Colors: white, black, grey, red, green, blue, yellow
 * Prepositions: in, on, at, with, near, too
 * Nouns: food, water, house, person, child, parent, tree, sun, moon, sky, bird, dog, cat, road, day, 
-       night, end, begin, fruit, wind, both, ball, star, wing
+       night, end, begin, fruit, wind, both, ball, star, wing, brother, sister, mom, dad
 * Adjectives: big, small, good, bad, hot, cold, light, dark
 * Change_state: open, close, break, make, fix
 * Internal_state: hungry, full, happy, sad, mad, scared, thirsty
+* Names: al, bu, ku, bur, gur, sur, gu, ret, pet, pur, yur, gee, zee, mom, dad
+       
 
 Example sentences:
 

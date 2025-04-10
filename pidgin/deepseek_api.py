@@ -8,10 +8,14 @@ def request_story():
     client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
 
     with open("pidgin.md", "r") as reference:
-        context = reference.read()
+        grammar_context = reference.read()
 
-    query = f"Using this following data as a reference, can you write a short children's story using this way of writing:{context} and exclusively this vocabulary: {vocabulary} \
-                The story takes places in a simple town with a row of houses. Before you return the story, parse it and check that only words from the vocabulary are in your story. Do not include anything else in your response besides the story."
+    with open("universe.md", "r") as universe:
+        universe_context = universe.read()
+
+    query = f"Using this following data as a reference, can you write a short children's story using this way of writing: {grammar_context} and exclusively this vocabulary: {vocabulary} \
+                The story takes places in this world: {universe_context}. Before you return the story, parse it and check that only words from the vocabulary are in your story. \
+                Do not include anything else in your response besides the story."
 
     try:
         response = client.chat.completions.create(
@@ -44,7 +48,7 @@ def request_story():
         print(f"An error occurred: {e}")
 
 def main():
-    for i in range(5):
+    for i in range(100):
         print(f"Requesting Story {i + 1}")
         request_story()
 
