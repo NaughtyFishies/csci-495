@@ -70,6 +70,10 @@ vocabulary = {
     
     # Names
     "names": ["al", "bu", "ku", "bur", "gur", "sur", "gu", "ret", "pet", "pur", "yur", "gee", "zee", "mom", "dad", "sis", "bro"],
+    
     # Expressions
-    "expressions": ["hi", "oh", "ok", "bye", "hello", "maybe", "how", "hey"]
+    "expressions": ["hi", "oh", "ok", "bye", "hello", "maybe", "how", "hey"],
+    
+    # Punctuation
+    "punctuation": [".", ";", '"', "'", "?", "!"]
 }

@@ -3,6 +3,7 @@ import torch.nn as nn
 from torch.nn import functional as F
 import math
 from vocabulary import vocabulary
+import re
 
 # Hyperparameters
 batch_size = 32
@@ -34,7 +35,14 @@ vocab_size = len(words)
 
 # Tokenization function
 def tokenize(text):
-    tokens = text.lower().split()
+    # Step 1: Normalize text (lowercase + handle apostrophes/contractions if needed)
+    text = text.lower()
+    
+    # Step 2: Separate punctuation from words using regex
+    text = re.sub(r'([.,!?()])', r' \1 ', text)  # Adds spaces around punctuation
+    tokens = text.split()  # Splits into words/punctuation
+    
+    # Step 3: Map tokens to vocabulary (or <unk> if not found)
     return [token if token in stoi else "<unk>" for token in tokens]
 
 # Load and process training data
@@ -204,11 +212,19 @@ for iter in range(max_iters):
     loss.backward()
     optimizer.step()
 
-# Generate some text
+# Generate 10,000 tokens
 context = torch.tensor([[stoi["<sos>"]]], dtype=torch.long, device=device)
-generated = m.generate(context, max_new_tokens=50)[0].tolist()
-print("\nGenerated text:")
-print(' '.join([itos[i] for i in generated]))
+generated = m.generate(context, max_new_tokens=10000)[0].tolist()
+generated_text = ' '.join([itos[i] for i in generated])
+
+print("\nFirst 100 tokens of generated text:")
+print(' '.join([itos[i] for i in generated[:100]]))
+
+output_file = 'generated.txt'
+with open(output_file, 'w', encoding='utf-8') as f:
+    f.write(generated_text)
+
+print(f"\nFull output (10,000 tokens) written to {output_file}")
 
 # Save the trained model
 model_save_path = 'word_transformer_model.pth'

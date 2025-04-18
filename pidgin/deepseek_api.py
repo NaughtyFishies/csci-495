@@ -48,7 +48,7 @@ def request_story():
         print(f"An error occurred: {e}")
 
 def main():
-    for i in range(100):
+    for i in range(1000):
         print(f"Requesting Story {i + 1}")
         request_story()
 
