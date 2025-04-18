@@ -21,8 +21,6 @@ dropout = 0.2
 torch.manual_seed(1337)
 
 
-
-# Flatten vocabulary and add special tokens
 words = []
 for category in vocabulary.values():
     words.extend(category)
@@ -35,14 +33,11 @@ vocab_size = len(words)
 
 # Tokenization function
 def tokenize(text):
-    # Step 1: Normalize text (lowercase + handle apostrophes/contractions if needed)
     text = text.lower()
     
-    # Step 2: Separate punctuation from words using regex
     text = re.sub(r'([.,!?()])', r' \1 ', text)  # Adds spaces around punctuation
-    tokens = text.split()  # Splits into words/punctuation
+    tokens = text.split()
     
-    # Step 3: Map tokens to vocabulary (or <unk> if not found)
     return [token if token in stoi else "<unk>" for token in tokens]
 
 # Load and process training data
