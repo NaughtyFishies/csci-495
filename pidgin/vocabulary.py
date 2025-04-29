@@ -75,5 +75,5 @@ vocabulary = {
     "expressions": ["hi", "oh", "ok", "bye", "hello", "maybe", "how", "hey"],
     
     # Punctuation
-    "punctuation": [".", ";", '"', "'", "?", "!"]
+    "punctuation": [".", ";", '"', "'", "?", "!", ":", ","]
 }

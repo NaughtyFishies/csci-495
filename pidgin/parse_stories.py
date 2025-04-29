@@ -17,7 +17,6 @@ def preprocess_string(s):
     s = s.replace('\n', '')
     s = s.replace('\"', '')
     s = s.replace('  ', ' ')
-    s = s.replace(' me ', ' i ')
     
     # Ensure whitespace after punctuation
     s = re.sub(r'([,.!?])([^\s])', r'\1 \2', s)
@@ -52,4 +51,4 @@ with open('valid_strings.txt', 'w') as file:
         # Apply the punctuation space check one more time before writing
         story = ensure_punctuation_space(string)
         story = story.replace('  ', ' ')
-        file.write(story)
+        file.write("<sos> " + story + " <eos> ")

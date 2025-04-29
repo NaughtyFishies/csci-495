@@ -20,32 +20,24 @@ dropout = 0.2
 
 torch.manual_seed(1337)
 
-
-
-# Flatten vocabulary and add special tokens
 words = []
 for category in vocabulary.values():
     words.extend(category)
-words = ["<unk>", "<pad>", "<sos>", "<eos>"] + words
+words = ["<unk>", "<sos>", "<eos>"] + words
 
-# Create mappings
 stoi = {word: i for i, word in enumerate(words)}
 itos = {i: word for i, word in enumerate(words)}
 vocab_size = len(words)
 
-# Tokenization function
 def tokenize(text):
-    # Step 1: Normalize text (lowercase + handle apostrophes/contractions if needed)
+    """Split text into tokens"""
     text = text.lower()
     
-    # Step 2: Separate punctuation from words using regex
     text = re.sub(r'([.,!?()])', r' \1 ', text)  # Adds spaces around punctuation
-    tokens = text.split()  # Splits into words/punctuation
+    tokens = text.split()
     
-    # Step 3: Map tokens to vocabulary (or <unk> if not found)
     return [token if token in stoi else "<unk>" for token in tokens]
 
-# Load and process training data
 with open('valid_strings.txt', 'r', encoding='utf-8') as f:
     text = f.read()
 
@@ -54,8 +46,8 @@ n = int(0.9 * len(data))
 train_data = data[:n]
 val_data = data[n:]
 
-# Data loading
 def get_batch(split):
+    """Randomly gather batches of text for testing and validation"""
     data = train_data if split == 'train' else val_data
     ix = torch.randint(len(data) - block_size, (batch_size,))
     x = torch.stack([data[i:i+block_size] for i in ix])
@@ -142,6 +134,7 @@ class Block(nn.Module):
         return x
 
 class GPTLanguageModel(nn.Module):
+    """Full Model"""
     def __init__(self):
         super().__init__()
         self.token_embedding_table = nn.Embedding(vocab_size, n_embd)
@@ -161,9 +154,6 @@ class GPTLanguageModel(nn.Module):
 
     def forward(self, idx, targets=None):
         B, T = idx.shape
-        
-        if T > block_size:
-            raise ValueError(f"Cannot forward sequence of length {T}, block size is only {block_size}")
             
         tok_emb = self.token_embedding_table(idx)
         pos_emb = self.position_embedding_table(torch.arange(T, device=device))
@@ -192,13 +182,11 @@ class GPTLanguageModel(nn.Module):
             idx = torch.cat((idx, idx_next), dim=1)
         return idx
 
-# Initialize model
 model = GPTLanguageModel()
 m = model.to(device)
 print(f"Model parameters: {sum(p.numel() for p in m.parameters())/1e6:.2f}M")
 print(f"Vocabulary size: {vocab_size}")
 
-# Training loop
 optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
 
 for iter in range(max_iters):
@@ -213,21 +201,20 @@ for iter in range(max_iters):
     optimizer.step()
 
 # Generate 10,000 tokens
-context = torch.tensor([[stoi["<sos>"]]], dtype=torch.long, device=device)
-generated = m.generate(context, max_new_tokens=10000)[0].tolist()
-generated_text = ' '.join([itos[i] for i in generated])
+# context = torch.tensor([[stoi["<sos>"]]], dtype=torch.long, device=device)
+# generated = m.generate(context, max_new_tokens=10000)[0].tolist()
+# generated_text = ' '.join([itos[i] for i in generated])
 
-print("\nFirst 100 tokens of generated text:")
-print(' '.join([itos[i] for i in generated[:100]]))
+# print("\nFirst 100 tokens of generated text:")
+# print(' '.join([itos[i] for i in generated[:100]]))
 
-output_file = 'generated.txt'
-with open(output_file, 'w', encoding='utf-8') as f:
-    f.write(generated_text)
+# output_file = 'generated.txt'
+# with open(output_file, 'w', encoding='utf-8') as f:
+#     f.write(generated_text)
 
-print(f"\nFull output (10,000 tokens) written to {output_file}")
+# print(f"\nFull output (10,000 tokens) written to {output_file}")
 
-# Save the trained model
-model_save_path = 'word_transformer_model.pth'
+model_save_path = f'models/{max_iters}_epoch_model.pth'
 torch.save({
     'model_state_dict': model.state_dict(),
     'vocab': words,
