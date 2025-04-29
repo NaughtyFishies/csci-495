@@ -20,6 +20,10 @@ dropout = 0.2
 
 torch.manual_seed(1337)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 61e970b188d7f9b42383354ea9f6771be2a336af
 words = []
 for category in vocabulary.values():
     words.extend(category)
@@ -30,7 +34,10 @@ itos = {i: word for i, word in enumerate(words)}
 vocab_size = len(words)
 
 def tokenize(text):
+<<<<<<< HEAD
     """Split text into tokens"""
+=======
+>>>>>>> 61e970b188d7f9b42383354ea9f6771be2a336af
     text = text.lower()
     
     text = re.sub(r'([.,!?()])', r' \1 ', text)  # Adds spaces around punctuation
