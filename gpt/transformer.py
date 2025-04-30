@@ -1,9 +1,62 @@
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
+import math
+from data.vocabulary import vocabulary
 import re
 
+# Hyperparameters
+batch_size = 32
+block_size = 256  # Context length
+max_iters = 5000
+eval_interval = 500
+learning_rate = 3e-4
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+eval_iters = 200
+n_embd = 384
+n_head = 6
+n_layer = 6
+dropout = 0.2
+
+torch.manual_seed(1337)
+
+words = []
+for category in vocabulary.values():
+    words.extend(category)
+words = ["<unk>", "<sos>", "<eos>"] + words
+
+stoi = {word: i for i, word in enumerate(words)}
+itos = {i: word for i, word in enumerate(words)}
+vocab_size = len(words)
+
+def tokenize(text):
+    """Split text into tokens"""
+    text = text.lower()
+    
+    text = re.sub(r'([.,!?()])', r' \1 ', text)  # Adds spaces around punctuation
+    tokens = text.split()
+    
+    return [token if token in stoi else "<unk>" for token in tokens]
+
+with open('data/valid_strings.txt', 'r', encoding='utf-8') as f:
+    text = f.read()
+
+data = torch.tensor([stoi[word] for word in tokenize(text)], dtype=torch.long)
+n = int(0.9 * len(data))
+train_data = data[:n]
+val_data = data[n:]
+
+def get_batch(split):
+    """Randomly gather batches of text for testing and validation"""
+    data = train_data if split == 'train' else val_data
+    ix = torch.randint(len(data) - block_size, (batch_size,))
+    x = torch.stack([data[i:i+block_size] for i in ix])
+    y = torch.stack([data[i+1:i+block_size+1] for i in ix])
+    x, y = x.to(device), y.to(device)
+    return x, y
+
 class Head(nn.Module):
+    """One head of self-attention"""
     def __init__(self, head_size):
         super().__init__()
         self.key = nn.Linear(n_embd, head_size, bias=False)
@@ -25,6 +78,7 @@ class Head(nn.Module):
         return out
 
 class MultiHeadAttention(nn.Module):
+    """Multiple heads of self-attention in parallel"""
     def __init__(self, num_heads, head_size):
         super().__init__()
         self.heads = nn.ModuleList([Head(head_size) for _ in range(num_heads)])
@@ -37,6 +91,7 @@ class MultiHeadAttention(nn.Module):
         return out
 
 class FeedForward(nn.Module):
+    """A simple linear layer followed by a non-linearity"""
     def __init__(self, n_embd):
         super().__init__()
         self.net = nn.Sequential(
@@ -50,6 +105,7 @@ class FeedForward(nn.Module):
         return self.net(x)
 
 class Block(nn.Module):
+    """Transformer block: communication followed by computation"""
     def __init__(self, n_embd, n_head):
         super().__init__()
         head_size = n_embd // n_head
@@ -64,20 +120,26 @@ class Block(nn.Module):
         return x
 
 class GPTLanguageModel(nn.Module):
-    def __init__(self, vocab_size, block_size, n_embd, n_head, n_layer, dropout):
+    """Full Model"""
+    def __init__(self):
         super().__init__()
         self.token_embedding_table = nn.Embedding(vocab_size, n_embd)
         self.position_embedding_table = nn.Embedding(block_size, n_embd)
         self.blocks = nn.Sequential(*[Block(n_embd, n_head=n_head) for _ in range(n_layer)])
         self.ln_f = nn.LayerNorm(n_embd)
         self.lm_head = nn.Linear(n_embd, vocab_size)
-        self.block_size = block_size
+        self.apply(self._init_weights)
+
+    def _init_weights(self, module):
+        if isinstance(module, nn.Linear):
+            torch.nn.init.normal_(module.weight, mean=0.0, std=0.02)
+            if module.bias is not None:
+                torch.nn.init.zeros_(module.bias)
+        elif isinstance(module, nn.Embedding):
+            torch.nn.init.normal_(module.weight, mean=0.0, std=0.02)
 
     def forward(self, idx, targets=None):
         B, T = idx.shape
-        
-        if T > self.block_size:
-            raise ValueError(f"Cannot forward sequence of length {T}, block size is only {self.block_size}")
             
         tok_emb = self.token_embedding_table(idx)
         pos_emb = self.position_embedding_table(torch.arange(T, device=device))
@@ -98,74 +160,10 @@ class GPTLanguageModel(nn.Module):
 
     def generate(self, idx, max_new_tokens):
         for _ in range(max_new_tokens):
-            idx_cond = idx[:, -self.block_size:]
+            idx_cond = idx[:, -block_size:]
             logits, loss = self(idx_cond)
             logits = logits[:, -1, :]
             probs = F.softmax(logits, dim=-1)
             idx_next = torch.multinomial(probs, num_samples=1)
             idx = torch.cat((idx, idx_next), dim=1)
         return idx
-
-def tokenize(text):
-    text = text.lower()
-    text = re.sub(r'([.,!?()])', r' \1 ', text)
-    tokens = text.split()
-    return [token if token in stoi else "<unk>" for token in tokens]
-
-def generate_until_eos(model, idx, max_new_tokens=1000):
-    eos_token = stoi["<eos>"]
-    generated_tokens = []
-    
-    for _ in range(max_new_tokens):
-        idx_cond = idx[:, -model.block_size:]
-        logits, _ = model(idx_cond)
-        logits = logits[:, -1, :]
-        probs = F.softmax(logits, dim=-1)
-        idx_next = torch.multinomial(probs, num_samples=1)
-        idx = torch.cat((idx, idx_next), dim=1)
-        
-        generated_token = itos[idx_next.item()]
-        generated_tokens.append(generated_token)
-    
-        if idx_next.item() == eos_token:
-            break
-    
-    return idx, generated_tokens
-
-def generate_text(prompt, max_new_tokens=1000):
-    tokens = tokenize(prompt)
-    input_ids = torch.tensor([[stoi[token] for token in tokens]], dtype=torch.long, device=device)
-    generated_ids, generated_tokens = generate_until_eos(model, input_ids, max_new_tokens)
-    return ' '.join(tokens + generated_tokens)
-
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
-checkpoint = torch.load('5000_epoch_model.pth', map_location=device)
-
-config = checkpoint['config']
-block_size = config['block_size']
-n_embd = config['n_embd']
-n_head = config['n_head']
-n_layer = config['n_layer']
-dropout = config['dropout']
-
-words = checkpoint['vocab']
-stoi = checkpoint['stoi']
-itos = checkpoint['itos']
-vocab_size = len(words)
-
-model = GPTLanguageModel(
-    vocab_size=vocab_size,
-    block_size=block_size,
-    n_embd=n_embd,
-    n_head=n_head,
-    n_layer=n_layer,
-    dropout=dropout
-).to(device)
-
-model.load_state_dict(checkpoint['model_state_dict'])
-model.eval()
-
-prompt = "<sos>"
-generated_text = generate_text(prompt)
-print("Generated text:")
-print(generated_text)
